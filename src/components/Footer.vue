@@ -1,332 +1,63 @@
 <template>
-	<div>
-		<main id="app" class="section" v-if="$route.meta.title !== 'embed'">
-			<!--<h1 v-if="!isEmbeded" class='{fade: hasBeenLoaded}'>Cryptogene</h1> --class="loading-logo"-->
-			<div class="container">
-				<nav-main></nav-main>
-				<router-view :key="$route.fullPath"></router-view>
-				<signIn v-if="displayLogin"></signIn>
-				<signUp v-if="displaySignUp"></signUp>
-				<share-modal v-if="displayShareModal"></share-modal>
-				<main-container v-show="displayCanvas" class="main"></main-container>
-				<footer-main></footer-main>
-			</div>
-			<uniformGUI></uniformGUI>
-		</main>
-		<div class="main embeded" v-if="$route.meta.title === 'embed'">
-			<router-view :key="$route.fullPath"></router-view>
-			<div ref="threeCanvas" class="canvas-container" ></div>
-		</div>
-	</div>
+    <footer id="footer">
+            <div id="footer-utility">
+                <div class="footer__chat imgborderround">
+                    <ul class="footer__ul"><h3 class="footer__left">Chromagene</h3>
+                        <li class="footer__li"><a class="footer__a" href="/#">Privacy Policy</a></li>
+                        <li class="footer__li"><a class="footer__a" href="/#">Terms and Conditions</a></li>
+                        <li class="footer__li"> <img class="footer__chat-img-icon footer__li" width="18" alt="footer"  height="14" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469462241/msg_jn0whe.svg" href="#" />Chat</li>
+                        <li class="footer__li"> <img class="footer__chat-img-icon footer__li" width="15"   alt="footer" height="15" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469462243/phone_zfj4ey.svg" href="#" />1-206-561-8223</li>
+                    </ul>
+                </div>
+                <div class="footer__partition"></div>
+                <div class="footer__about">
+                    <ul class="footer__ul">
+                        <h3 class="footer__left">Molly Beach</h3>
+                        <li class="footer__li"><a class="footer__a" href="/#">chromagene@gmail.com</a></li>
+                        <li class="footer__li"><a class="footer__a" href="/#">© 2021, Chromagene</a></li>
+                    </ul>
+                </div>
+                <div class="footer__partition"></div>
+                <div class="footer__card">
+                    <ul class="footer__ul">
+                        <h3 class="footer__left">ABOUT US</h3>
+                        <li class="footer__li"><a class="footer__a" href="/#">Privacy Policy</a></li>
+                        <li class="footer__li"><a class="footer__a" href="/#">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a  href="/" class="footer__a" ><img class='footer__logo' src="https://res.cloudinary.com/chromagene/image/upload/v1628703086/dna/company_k746rb.svg" alt="" /></a>
+            <div id="footer-newsletter-social">
+                <div id="footer-newsletter">
+                    <h3 class="footer__center">Discover more with Chromagene</h3>
+                    <div class='footer__enter'>
+                        <input type="text" placeholder="Enter email address" class="getemailform"/>
+                        <input class="enteremailbutton" type="submit" value="Sign Up" />
+                    </div>
+                </div>
+                <div id="footer-social">
+                    <a class="footer__a" href="https://www.facebook.com/" target="_blank" rel="noreferrer"> <img width="34" height="34" src="https://res.cloudinary.com/chromagene/image/upload/v1628704820/dna/facebook_gtzwdj.svg" alt="facebook" /></a>
+                    <a class="footer__a" href="https://twitter.com/chromagene" target="_blank" rel="noreferrer"> <img width="34" height="34" src="https://res.cloudinary.com/chromagene/image/upload/v1628704801/dna/twitter_jfyf8d.svg" alt="twitter" /></a> 
+                    <a class="footer__a" href="https://github.com/mollybeach/chromagene" target="_blank" rel="noreferrer"> <img width="34" height="34" src="https://res.cloudinary.com/chromagene/image/upload/v1628713456/dna/github_cswvy4.png" alt="pintrest" /></a > 
+                    <a class="footer__a" href="https://www.instagram.com/" target="_blank" rel="noreferrer"> <img width="34" height="34" src="https://res.cloudinary.com/chromagene/image/upload/v1628704828/dna/instagram_bollab.svg" alt="instagram"/> </a>
+                    <a class="footer__a" href="http://youtube.com/" target="_blank" rel="noreferrer"> <img width="34" height="34" src="https://res.cloudinary.com/chromagene/image/upload/v1628704814/dna/youtube_obyfsl.svg" alt="youtube" /></a>
+                </div>
+            </div>       
+            <div class="footer__border"></div>
+            <div id="footer-copyright">
+                <div class="footer__law">
+                <ul class="footer__ul">
+                    <li class="footer__li footer__copy"> © 2021 Chromagene.</li>
+                    <li class="footer__li footer__copy"> Privacy Policy | Terms + Conditions | Sitemap</li>
+                    <li class=" footer__li footer__copy"> Washington | Transparency in Supply Chains Act</li>
+                </ul>
+                </div>
+            </div>
+            
+    </footer>
 </template>
-
-<script>
-import Header from './components/Header.vue';
-import MainContainer from './components/MainContainer.vue';
-import SignIn from './components/SignIn.vue';
-import SignUp from './components/SignUp.vue';
-import UniformGUI from './components/UniformGUI.vue';
-import ShareModal from './components/ShareModal.vue';
-import Footer from './components/Footer.vue';
-
-export default {
-	components: {
-		navMain: Header,
-		mainContainer: MainContainer,
-		signIn: SignIn,
-		signUp: SignUp,
-		uniformGUI: UniformGUI,
-		shareModal: ShareModal,
-		footerMain: Footer
-	},
-	data: function() {
-		return {
-			isMounted: false,
-			hasBeenLoaded: false
-		}
-	},
-	computed: {
-		displayShareModal() {
-			return this.$store.getters.displayShareModal;
-		},
-		displayCanvas() {
-			return this.$store.getters.displayCanvas;
-		},
-		sculpturesLoaded() {
-			return this.$store.state.sculpturesLoaded;
-		},
-		isEmbeded() {
-			return this.$store.state.embedded;
-		},
-		displayLogin() {
-			return this.$store.getters.displayLogin;
-		},
-		displaySignUp() {
-			return this.$store.getters.displaySignUp;
-		}
-	},
-	watch : {
-        sculpturesLoaded(value) {
-			if(value && !this.hasBeenLoaded) {
-				this.hasBeenLoaded = true;
-			}
-		},
-		displayCanvas(val) {
-			// console.log('display canvas changed', val)
-		}
-	},
-	methods: {
-		setUser: function() {
-			this.$store.dispatch('setUser');
-			this.$store.dispatch('fetchUserFavorites');
-			this.$store.dispatch('fetchUserComments');
-		},
-		didMount: function(callback) {
-			callback();
-		}
-	},
-	created() {
-	// when the app is created run the set user method
-	// this uses Vuex to check if a user is signed in
-	// check out mutations in the store.js file
-		this.setUser();
-	},
-	mounted() {
-		this.$nextTick(function () {
-			this.isMounted = true;
-			if(this.isEmbeded || this.$route.meta.title === 'embed') {
-				document.body.classList.add('embeded');
-			}
-			if (this.$route.meta.title === 'embed') {
-				let canvas = this.$refs.threeCanvas;
-				this.$store.commit('setCanvasSize', {width: window.innerWidth, height: window.innerHeight});
-			}
-		})
-		
-	},
-};
-</script>
-
-<style lang="less" scoped>
-
-.loading-logo {
-	position: absolute;
-	left: 0px;
-	top: 50%;
-	right: 0px;
-	bottom: 0px;
-	z-index: 10;
-	height: 47px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	line-height: 89px;
-	-webkit-transform: translate(0px, -50%);
-	-ms-transform: translate(0px, -50%);
-	transform: translate(0px, -50%);
-	-webkit-transition: opacity 300ms ease;
-	transition: opacity 300ms ease;
-	/* font-family: Poppins, sans-serif; */
-	font-size: 88px;
-	font-weight: 400;
-	text-align: center;
-	letter-spacing: 5.06px;
-	text-transform: uppercase;
-	-moz-animation-duration: 300ms;
-	-webkit-animation-duration: 300ms;
-	-ms-animation-duration: 300ms;
-	animation-duration: 300ms;
-	&.fade {
-		opacity: 0.0;
-		visibility:hidden;
-		transition:visibility 0s ease-in-out 300ms,opacity 300ms ease-in-out;
-	}
-}
-
-
-@media (max-width: 479px) {
-	.loading-logo {
-		font-size: 67px;
-		line-height: 62px;
-		letter-spacing: 10.06px;
-	}
-}
-</style>
-
-<style lang="less">
-
-@import './client/webflow.css';
-@import './client/normalize.css';
-
-@font-size: 40px;
-
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Bold.woff2') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Book.woff2') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-// @font-face {
-//   font-family: 'Regolapro';
-//   src: url('./client/fonts/RegolaPro-Regular.otf') format('opentype');
-//   font-weight: 100;
-//   font-style: normal;
-// }
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Book.woff2') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Book.woff2') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-// @font-face {
-//   font-family: 'Regolapro';
-//   src: url('./client/fonts/RegolaPro-Medium.otf') format('opentype');
-//   font-weight: 500;
-//   font-style: normal;
-// }
-
-@font-family: 'Regolapro', 'Poppins', sans-serif;
-
-[v-cloak] {
-    display: none;
-}
-.logo {
-	position: relative;
-	text-align: center;
-	top:50%;
-	// transform: translateY(-50%);
-}
-
-// canvas { width: 100%; height: 100% }
-#editor {
-	//position: absolute;
-	top: 135px;
-	right: 8px;
-	width: 40%;
-	height: 80%;
-	visibility: visible;
-}
-#editor-controls {
-	padding-bottom: 3px;
-  border: 5px solid var(--barbiepink);
-  border-radius: 25px;
-}
-.CodeMirror {
-	width: 60%;
-	height: 100%;
-  border: solid 5px var(--barbiepink);
-  border-radius: 25px;
-}
-.error-span {
-	background-color: red;
-	color: white;
-}
-
-
-body {
-	&.embeded {
-		background: none !important;
-	}
-    background: white;
-    font-family: @font-family;
-    // overflow: hidden;
-    letter-spacing: 0.1px;
-    margin: 0;
-}
-
-.ge_editor {
-	letter-spacing: 0px;
-}
-
-button {
-	letter-spacing: 0.5px;
-}
-
-h1 {
-	letter-spacing: 0.5px;
-}
-
-a {
-  text-decoration: none;
-  transition: color 300ms ease-in-out;
-  color:#006492;
-}
-
-a:hover {
-  color: black;
-}
-// textarea {
-//     background: white;
-//     height: 40vh;
-//     padding: 10px;
-//     // height: 56px;
-//     font-family: @font-family;
-//     font-weight: 300;
-//     font-size: @font-size;
-//     -webkit-appearance: none;
-//     border: none;
-//     border-bottom: 5px solid #64C7CC;
-// }
-// select {
-//     border: none;
-//     border-color: lightgray;
-//     background-color: white;
-//     height: 60px;
-//     font-family: @font-family;
-//     font-size: @font-size;
-// }
-// span {
-//     text-transform: uppercase;
-//     display: inline-block;
-// }
-
-// button {
-//     font-size: 30px;
-//     font-family: @font-family;
-//     border:none;
-//     cursor: pointer;
-//     padding: 10px;
-//     border: 5px solid black;
-// }
-
-// .footer {
-//     text-align: center;
-//     position: absolute;
-//     width: 100%;
-//     bottom: 20px;
-    
-// }
-
-.w-layout-grid {
-  display: -ms-grid;
-  display: grid;
-  grid-auto-columns: 1fr;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: auto auto;
-  grid-template-rows: auto auto;
-  grid-row-gap: 16px;
-  grid-column-gap: 16px;
-}
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
+<script></script>
+<style>
   /* CHROMOGENE STYLES*/
 
   /* 1. noir- primary text color for header footer 5c667e/
@@ -1662,133 +1393,7 @@ button:focus {
   
   
   
-  
-  /********************************BUTTON*********************************************/
-  .btn {
-    margin-right: 10px;
-    margin-top: 30px;
-    font-family: "Source Sans Pro",sans-serif;
-    font-weight: 900;
-    padding: 1.25rem 2rem;
-    font-size: 1rem;
-    border-radius: 3.5rem/100%;
-    position: relative;
-    min-width: 15rem;
-    max-width: 90vw;
-    overflow: hidden;
-    border: 0;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    transition: all .33s;
-    outline: none;
-    margin-bottom: 10%;
-    border-radius: 15px;
-  
-  }
-  
-  .btn + .btn {
-    outline: none;
-    margin-top: 1rem;
-  }
-  .btn span {
-    outline: none;
-    position: relative;
-    z-index: 1;
-  }
-  /*
-  .btn:before {
-    outline: none;
-    content: "";
-    background-color: var(--popblue);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: scale(4) translateX(-100%);
-    transition: all 495ms ease-out;
-    outline: none;
-  }
-  
-  .btn:hover:before, .btn:focus:before, .btn:active:before {
-    outline: none;
-    transform: scale(4) translate(37%);
-  }
-  */
-  .btn--alpha {
-    outline: none;
-    background-color: var(--popblue);
-    color: var(--scenepurple);
-  }
-  .btn--alpha:before {
-    background-color: var(--scenepurple);
-    background-image: linear-gradient(to right, var(--scenepurple) 30%, var(--popblue) 100%);
-    position: absolute;
-  }
-  .btn--alpha:hover, .btn--alpha:focus, .btn--alpha:active {
-    outline: none;
-    color: var(--popblue);
-  }
-  
-  .btn--beta {
-    outline: none;
-    background-color: var(--spadeblue);
-    color: var(--neonmelon);
-  }
-  .btn--beta:before {
-    background-color: var(--neonmelon);
-    background-image: linear-gradient(to right, var(--neonmelon) 30%, var(--spadeblue) 100%);
-    position: absolute;
-  }
-  .btn--beta:hover, .btn--beta:focus, .btn--beta:active {
-    outline: none;
-    color: var(--scenepurple);
-  }
-  
-  .btn--gamma {
-    outline: none;
-    background-color: var(--bumblebee);
-    color: var(--lipgloss);
-  }
-  .btn--gamma:before {
-    background-color: var(--lipgloss);
-    background-image: linear-gradient(to right, var(--lipgloss) 30%, var(--bumblebee)100%);
-    position: absolute;
-  }
-  .btn--gamma:hover, .btn--gamma:focus, .btn--gamma:active {
-    outline: none;
-    color: var(--bumblebee);
-  }
-  
-  .btn--delta {
-    outline: none;
-    background-color: var(--neonmelon);
-    color: var(--cottoncandy);
-  }
-  .btn--delta:before {
-    background-color: var(--scenepurple);
-    background-image: linear-gradient(to right, var(--scenepurple) 30%, var(--neonmelon) 100%);
-    position: absolute;
-  }
-  .btn--delta:hover, .btn--delta:focus, .btn--delta:active {
-    outline: none;
-    color: var(--neonmelon);
-  }
-  .btn--sigma{
-    outline: none;
-    background-color: var(--raspberrypi);
-    color: var(--cottoncandy);
-  }
-  .btn--sigma:before {
-    background-color: var(--scenepurple);
-    background-image: linear-gradient(to right, var(--scenepurple) 30%, var(--neonmelon) 100%);
-    position: absolute;
-  }
-  .btn--sigma:hover, .btn--delta:focus, .btn--delta:active {
-    outline: none;
-    color: var(--neonmelon);
-  }
+
   /****************************************END BUTTON****************************************/
   /****************************************BUTTON FORM****************************************/
 
@@ -1820,7 +1425,4 @@ button:focus {
       width: 100%;
       table-layout:fixed;
     }
-    
-</style>
-
-
+    </style>

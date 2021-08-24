@@ -1,331 +1,99 @@
 <template>
-	<div>
-		<main id="app" class="section" v-if="$route.meta.title !== 'embed'">
-			<!--<h1 v-if="!isEmbeded" class='{fade: hasBeenLoaded}'>Cryptogene</h1> --class="loading-logo"-->
-			<div class="container">
-				<nav-main></nav-main>
-				<router-view :key="$route.fullPath"></router-view>
-				<signIn v-if="displayLogin"></signIn>
-				<signUp v-if="displaySignUp"></signUp>
-				<share-modal v-if="displayShareModal"></share-modal>
-				<main-container v-show="displayCanvas" class="main"></main-container>
-				<footer-main></footer-main>
-			</div>
-			<uniformGUI></uniformGUI>
-		</main>
-		<div class="main embeded" v-if="$route.meta.title === 'embed'">
-			<router-view :key="$route.fullPath"></router-view>
-			<div ref="threeCanvas" class="canvas-container" ></div>
-		</div>
-	</div>
+        <div>
+    <main class="main background-dna">
+    <section class="featured emblem">
+            <article class="sector sector-featured">
+                <div class="sector__partiton">
+                    <div class="sector__maintitle imgborderround">ChromaGene 
+                            <img class="sector__arrow " src="https://res.cloudinary.com/chromagene/image/upload/v1628704653/dna/chevron_right-24px_p2z0sa.svg" alt="img"/></div>
+                            <div class="sector__subtitle imgborderround"> Welcome to ChromaGene!</div> 
+                            <a href="/#" class="" > <img class="hero__image hide-3 imgborderround" src="https://res.cloudinary.com/chromagene/image/upload/v1628720174/dna/imgs/transparentdnagif_uzrqua.gif" alt="" /></a>
+                            <h1 class="sector-title imgborderround"><p>Start your journey by uploading a DNA.txt or.csv file. A SNP (Single-Nucleotide Polymorphism) is a single nucleotide polymorphism (A, G, C or T). a 25-megabyte text file containing which represents a minuscule variation against a common shared source code Even though it represents millions of years of development,the data can be moved to your device in seconds.We provide an identifier (an rsid or an internal id) for each SNP, as well as its position on the reference human genome and the genotype call oriented toward the plus strand on the human reference sequence.</p></h1>
+                            <Link to="/upload">  <button class="btn btn--delta " type="submit"><span>Get Started</span></button></Link>
+                    </div>
+                    </article>
+                    <div class="featured-column">
+            <article class="sector">
+                <div class="sector-card">
+                        <h4 class="sidebar-list__label imgborderround">INFO</h4>
+                        <a href="/#"><img class="sidebar-list__image" src='https://res.cloudinary.com/chromagene/image/upload/v1628704643/dna/DNA-Circle_ixxq6g.svg' alt="Facial" /></a>
+                            <div class="sector__text">
+                                <h1 class="sector-title imgborderround"><a href="/#">TEMPLATES</a></h1>
+                                <p class="excerpt imgborderround">Homo J est A diu DNA molecule ex parte aut ex toto geneticae materia of an organism. Quo dicitur servo histones Eukaryotic maxime chromosomata includunt packaging adiutus chaperone servo obligant et conprehensa DNA moleculae servare integrit</p>
+                                <p class="sector-link-more"><a href="/#">MORE</a></p>
+                            </div>
+                    </div>
+                </article>
+            <article class="sector">
+                    <div class="sector-card ">
+                        <h4 class="sidebar-list__label imgborderround">DATA</h4>
+                        <img  class="sidebar-list__image imgborderround" src="https://res.cloudinary.com/chromagene/image/upload/v1628720174/dna/imgs/transparentdnagif_uzrqua.gif" width="256" height="256" alt="" />   
+                        <div class="sector__text">
+                            <h1 class="sector-title imgborderround"><a href="/#">STUDIES</a></h1>
+                            <p class="excerpt imgborderround">Geneticae tamen experientia certissima est vexillum, etiam maior modi est, inter coetus, Patrem omnipotentem sanguis typing, analysis de variis aliorum proteins quod enzymes, vel per humanae leukocyte antigen antigens. Nam paternitas temptationis quae per artes in current Encephalitis (PCR) et Dictyostelium discoideum (RFLP). Temptationis potest fieri paternitas nunc et usque dum femina gravida ducatur a sanguine..</p>
+                            <p class="sector-link-more"><a href="/#">MORE</a></p>
+                        </div>
+                    </div>
+            </article>
+            </div>
+    </section>
+
+        <aside class="home-side-col emblem">
+        <ul class="sidebar-list"> 
+            <li class="sidebar-list__item">
+                <h4 class="sidebar-list__label imgborderround">SEQUENCES</h4>
+                <a href="/#"><img class="sidebar-list__image imgborderround" src= 'https://res.cloudinary.com/chromagene/image/upload/v1628704643/dna/DNA-Circle_ixxq6g.svg' width="256" height="256" alt="" /> </a>
+                <span></span>
+            </li>
+            <li class="sidebar-list__item">
+                <h4 class="sidebar-list__label imgborderround">DESIGNS</h4>
+                <a href="/#"><img class="sidebar-list__image imgborderround" src="https://res.cloudinary.com/chromagene/image/upload/v1628719490/dna/snpnoback/ACLIGHTVIOLET15_eifkto.png" width="256" height="256" alt="" /></a>
+                <span></span>
+            </li>
+            <li class="sidebar-list__item">
+                <h4 class="sidebar-list__label imgborderround">PROJECTS</h4>
+                <a href="/#"><img class="sidebar-list__image imgborderround" src='https://res.cloudinary.com/chromagene/image/upload/v1628720585/dna/imgs/jellybeantransparent_xaibze.gif' width="256" height="256" alt="" /></a>
+                <span></span>
+            </li>
+            <li class="sidebar-list__item">
+                <h4 class="sidebar-list__label">TESTIMONALS</h4>
+                <a href="/#"><img class="sidebar-list__image" src="https://res.cloudinary.com/chromagene/image/upload/v1628720461/dna/imgs/glslgiftransparent_zrqwxu.gif" width="196" height="196" alt="" /> </a>
+                <span></span>
+            </li>
+            <li class="sidebar-list__item">
+                <h4 class="sidebar-list__label"> ABOUT US</h4>
+                <img  class="sidebar-list__image" src="https://res.cloudinary.com/chromagene/image/upload/v1628719491/dna/snpnoback/CClightblue2_vyxfrn.png" width="256" height="256" alt="" />
+                <li class="sidebar-list__item">
+                    <h1 class="sector-title"><a href="/#"> ChromaGene </a></h1>
+                    <p class="excerpt">Adenin, Guanin, Cytosin und Thymin. Das Aufkommen schneller DNA-Sequenzierungsmethoden hat die biologische und medizinische Forschung und Entdeckung stark beschleunigtAntikörperrepertoire charakterisieren und kann als Leitfaden für die Patientenbehandlung verwendet werden. Die schnelle DNA-Sequenzierung ermöglicht eine schnellere und individuellere medizinische Versorgung sowie die Identifizierung und Katalogisierung von mehr Organismen</p>
+                </li>
+            <li>
+                <p class="sector-link-more"><a href="/#">MORE</a></p>
+                <li class="sidebar-list__item"></li>
+        </ul>
+    </aside>
+        <div class="slider">
+            <h2 class="slider__title">more creations</h2>
+            <div class="shop-list">
+                <div class="shop">
+                <button class="slider__button" type="button" name="button"><img src="https://res.cloudinary.com/dmoo9az8w/image/upload/v1475715813/arrow_left_h5ibyg.svg" alt="arrow"/></button>
+                <div class="shop-list__item hide-1">
+                    <a href="/#"><img  src="https://res.cloudinary.com/chromagene/image/upload/v1628719490/dna/snpnoback/ACLIGHTVIOLET15_eifkto.png"  width="290" height="256" alt="dna"/></a>
+                </div>
+                <div class="shop-list__item">
+                    <a href="/#"><img src="https://res.cloudinary.com/chromagene/image/upload/v1628720538/dna/imgs/chromosome2_joxlju.png"  alt="chromosome2" /></a>
+                </div>
+                <div class="shop-list__item hide-2"> 
+                    <a href="/#"><img src="https://res.cloudinary.com/chromagene/image/upload/v1628719490/dna/snpnoback/GGLIGHTGREEN21_o0hgvt.png" width="290" height="256" alt=""/></a>
+                </div>
+                </div>
+            </div>
+        </div>    
+    </main>
+</div>
 </template>
-
-<script>
-import Header from './components/Header.vue';
-import MainContainer from './components/MainContainer.vue';
-import SignIn from './components/SignIn.vue';
-import SignUp from './components/SignUp.vue';
-import UniformGUI from './components/UniformGUI.vue';
-import ShareModal from './components/ShareModal.vue';
-import Footer from './components/Footer.vue';
-
-export default {
-	components: {
-		navMain: Header,
-		mainContainer: MainContainer,
-		signIn: SignIn,
-		signUp: SignUp,
-		uniformGUI: UniformGUI,
-		shareModal: ShareModal,
-		footerMain: Footer
-	},
-	data: function() {
-		return {
-			isMounted: false,
-			hasBeenLoaded: false
-		}
-	},
-	computed: {
-		displayShareModal() {
-			return this.$store.getters.displayShareModal;
-		},
-		displayCanvas() {
-			return this.$store.getters.displayCanvas;
-		},
-		sculpturesLoaded() {
-			return this.$store.state.sculpturesLoaded;
-		},
-		isEmbeded() {
-			return this.$store.state.embedded;
-		},
-		displayLogin() {
-			return this.$store.getters.displayLogin;
-		},
-		displaySignUp() {
-			return this.$store.getters.displaySignUp;
-		}
-	},
-	watch : {
-        sculpturesLoaded(value) {
-			if(value && !this.hasBeenLoaded) {
-				this.hasBeenLoaded = true;
-			}
-		},
-		displayCanvas(val) {
-			// console.log('display canvas changed', val)
-		}
-	},
-	methods: {
-		setUser: function() {
-			this.$store.dispatch('setUser');
-			this.$store.dispatch('fetchUserFavorites');
-			this.$store.dispatch('fetchUserComments');
-		},
-		didMount: function(callback) {
-			callback();
-		}
-	},
-	created() {
-	// when the app is created run the set user method
-	// this uses Vuex to check if a user is signed in
-	// check out mutations in the store.js file
-		this.setUser();
-	},
-	mounted() {
-		this.$nextTick(function () {
-			this.isMounted = true;
-			if(this.isEmbeded || this.$route.meta.title === 'embed') {
-				document.body.classList.add('embeded');
-			}
-			if (this.$route.meta.title === 'embed') {
-				let canvas = this.$refs.threeCanvas;
-				this.$store.commit('setCanvasSize', {width: window.innerWidth, height: window.innerHeight});
-			}
-		})
-		
-	},
-};
-</script>
-
-<style lang="less" scoped>
-
-.loading-logo {
-	position: absolute;
-	left: 0px;
-	top: 50%;
-	right: 0px;
-	bottom: 0px;
-	z-index: 10;
-	height: 47px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	line-height: 89px;
-	-webkit-transform: translate(0px, -50%);
-	-ms-transform: translate(0px, -50%);
-	transform: translate(0px, -50%);
-	-webkit-transition: opacity 300ms ease;
-	transition: opacity 300ms ease;
-	/* font-family: Poppins, sans-serif; */
-	font-size: 88px;
-	font-weight: 400;
-	text-align: center;
-	letter-spacing: 5.06px;
-	text-transform: uppercase;
-	-moz-animation-duration: 300ms;
-	-webkit-animation-duration: 300ms;
-	-ms-animation-duration: 300ms;
-	animation-duration: 300ms;
-	&.fade {
-		opacity: 0.0;
-		visibility:hidden;
-		transition:visibility 0s ease-in-out 300ms,opacity 300ms ease-in-out;
-	}
-}
-
-
-@media (max-width: 479px) {
-	.loading-logo {
-		font-size: 67px;
-		line-height: 62px;
-		letter-spacing: 10.06px;
-	}
-}
-</style>
-
-<style lang="less">
-
-@import './client/webflow.css';
-@import './client/normalize.css';
-
-@font-size: 40px;
-
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Bold.woff2') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Book.woff2') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-// @font-face {
-//   font-family: 'Regolapro';
-//   src: url('./client/fonts/RegolaPro-Regular.otf') format('opentype');
-//   font-weight: 100;
-//   font-style: normal;
-// }
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Book.woff2') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Regolapro';
-  src: url('./client/fonts/RegolaPro-Book.woff2') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-// @font-face {
-//   font-family: 'Regolapro';
-//   src: url('./client/fonts/RegolaPro-Medium.otf') format('opentype');
-//   font-weight: 500;
-//   font-style: normal;
-// }
-
-@font-family: 'Regolapro', 'Poppins', sans-serif;
-
-[v-cloak] {
-    display: none;
-}
-.logo {
-	position: relative;
-	text-align: center;
-	top:50%;
-	// transform: translateY(-50%);
-}
-
-// canvas { width: 100%; height: 100% }
-#editor {
-	//position: absolute;
-	top: 135px;
-	right: 8px;
-	width: 40%;
-	height: 80%;
-	visibility: visible;
-}
-#editor-controls {
-	padding-bottom: 3px;
-  border: 5px solid var(--barbiepink);
-  border-radius: 25px;
-}
-.CodeMirror {
-	width: 60%;
-	height: 100%;
-  border: solid 5px var(--barbiepink);
-  border-radius: 25px;
-}
-.error-span {
-	background-color: red;
-	color: white;
-}
-
-
-body {
-	&.embeded {
-		background: none !important;
-	}
-    background: white;
-    font-family: @font-family;
-    // overflow: hidden;
-    letter-spacing: 0.1px;
-    margin: 0;
-}
-
-.ge_editor {
-	letter-spacing: 0px;
-}
-
-button {
-	letter-spacing: 0.5px;
-}
-
-h1 {
-	letter-spacing: 0.5px;
-}
-
-a {
-  text-decoration: none;
-  transition: color 300ms ease-in-out;
-  color:#006492;
-}
-
-a:hover {
-  color: black;
-}
-// textarea {
-//     background: white;
-//     height: 40vh;
-//     padding: 10px;
-//     // height: 56px;
-//     font-family: @font-family;
-//     font-weight: 300;
-//     font-size: @font-size;
-//     -webkit-appearance: none;
-//     border: none;
-//     border-bottom: 5px solid #64C7CC;
-// }
-// select {
-//     border: none;
-//     border-color: lightgray;
-//     background-color: white;
-//     height: 60px;
-//     font-family: @font-family;
-//     font-size: @font-size;
-// }
-// span {
-//     text-transform: uppercase;
-//     display: inline-block;
-// }
-
-// button {
-//     font-size: 30px;
-//     font-family: @font-family;
-//     border:none;
-//     cursor: pointer;
-//     padding: 10px;
-//     border: 5px solid black;
-// }
-
-// .footer {
-//     text-align: center;
-//     position: absolute;
-//     width: 100%;
-//     bottom: 20px;
-    
-// }
-
-.w-layout-grid {
-  display: -ms-grid;
-  display: grid;
-  grid-auto-columns: 1fr;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: auto auto;
-  grid-template-rows: auto auto;
-  grid-row-gap: 16px;
-  grid-column-gap: 16px;
-}
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
+<script></script>
+<style >
 
   /* CHROMOGENE STYLES*/
 
@@ -1508,7 +1276,7 @@ button:focus {
   }
   
   
-  /**************************FORM*************************
+  /**************************FORM**************************
   form{
     width: 350px;
     height: 800px;
@@ -1663,140 +1431,15 @@ button:focus {
   
   
   
-  /********************************BUTTON*********************************************/
-  .btn {
-    margin-right: 10px;
-    margin-top: 30px;
-    font-family: "Source Sans Pro",sans-serif;
-    font-weight: 900;
-    padding: 1.25rem 2rem;
-    font-size: 1rem;
-    border-radius: 3.5rem/100%;
-    position: relative;
-    min-width: 15rem;
-    max-width: 90vw;
-    overflow: hidden;
-    border: 0;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    transition: all .33s;
-    outline: none;
-    margin-bottom: 10%;
-    border-radius: 15px;
-  
-  }
-  
-  .btn + .btn {
-    outline: none;
-    margin-top: 1rem;
-  }
-  .btn span {
-    outline: none;
-    position: relative;
-    z-index: 1;
-  }
-  /*
-  .btn:before {
-    outline: none;
-    content: "";
-    background-color: var(--popblue);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: scale(4) translateX(-100%);
-    transition: all 495ms ease-out;
-    outline: none;
-  }
-  
-  .btn:hover:before, .btn:focus:before, .btn:active:before {
-    outline: none;
-    transform: scale(4) translate(37%);
-  }
-  */
-  .btn--alpha {
-    outline: none;
-    background-color: var(--popblue);
-    color: var(--scenepurple);
-  }
-  .btn--alpha:before {
-    background-color: var(--scenepurple);
-    background-image: linear-gradient(to right, var(--scenepurple) 30%, var(--popblue) 100%);
-    position: absolute;
-  }
-  .btn--alpha:hover, .btn--alpha:focus, .btn--alpha:active {
-    outline: none;
-    color: var(--popblue);
-  }
-  
-  .btn--beta {
-    outline: none;
-    background-color: var(--spadeblue);
-    color: var(--neonmelon);
-  }
-  .btn--beta:before {
-    background-color: var(--neonmelon);
-    background-image: linear-gradient(to right, var(--neonmelon) 30%, var(--spadeblue) 100%);
-    position: absolute;
-  }
-  .btn--beta:hover, .btn--beta:focus, .btn--beta:active {
-    outline: none;
-    color: var(--scenepurple);
-  }
-  
-  .btn--gamma {
-    outline: none;
-    background-color: var(--bumblebee);
-    color: var(--lipgloss);
-  }
-  .btn--gamma:before {
-    background-color: var(--lipgloss);
-    background-image: linear-gradient(to right, var(--lipgloss) 30%, var(--bumblebee)100%);
-    position: absolute;
-  }
-  .btn--gamma:hover, .btn--gamma:focus, .btn--gamma:active {
-    outline: none;
-    color: var(--bumblebee);
-  }
-  
-  .btn--delta {
-    outline: none;
-    background-color: var(--neonmelon);
-    color: var(--cottoncandy);
-  }
-  .btn--delta:before {
-    background-color: var(--scenepurple);
-    background-image: linear-gradient(to right, var(--scenepurple) 30%, var(--neonmelon) 100%);
-    position: absolute;
-  }
-  .btn--delta:hover, .btn--delta:focus, .btn--delta:active {
-    outline: none;
-    color: var(--neonmelon);
-  }
-  .btn--sigma{
-    outline: none;
-    background-color: var(--raspberrypi);
-    color: var(--cottoncandy);
-  }
-  .btn--sigma:before {
-    background-color: var(--scenepurple);
-    background-image: linear-gradient(to right, var(--scenepurple) 30%, var(--neonmelon) 100%);
-    position: absolute;
-  }
-  .btn--sigma:hover, .btn--delta:focus, .btn--delta:active {
-    outline: none;
-    color: var(--neonmelon);
-  }
+
   /****************************************END BUTTON****************************************/
   /****************************************BUTTON FORM****************************************/
 
-  
   .mod-button {
     height: 30px;
   }/*# sourceMappingURL=Upload.css.map */
   /****************************************END BUTTON FORM****************************************/
+  
   
   .upload__progressbar {
       margin-top: 30px;
@@ -1820,7 +1463,95 @@ button:focus {
       width: 100%;
       table-layout:fixed;
     }
+      /**************************HEADER BUTTON************************/
+    .buttonH--size-xs {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 3.4rem;
+    font-size: 1.6rem;
+}
+.buttonH, .buttonH:active {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-box-shadow: 0 .2rem 0 0 var(--color-shadow);
+    box-shadow: 0 .2rem 0 0 var(--color-shadow);
+}
+.buttonH {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    background: var(--color-main);
+    color: var(--color-text);
+    border: 2px solid var(--color-shadow);
+    border-radius: .5rem;
+    cursor: pointer;
+    -webkit-transition: all .2s cubic-bezier(.06,.67,.37,.99);
+    transition: all .2s cubic-bezier(.06,.67,.37,.99);
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+}
+.buttonH--color {
+   /* --color-main: #3EECAC;
+    --color-shadow: #6CC04A;*/
+        --color-main: #ef52d1;
+    --color-shadow: #c23da8;
+    --color-text: #fff;
+}
+.buttonH-children {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+button{
+    background: none;
+}
+.menu {  
+
+
+   color: #fff;
+}
+
+.menu a {
+
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu li {
+  
+ 
+  color: #fff;
+
+  background: transparent;
+}
+
+
+.menu li ul li {
+  background: var(--greenapple);
+  transition: background .2s;
+   color: #fff;
+}
+
+.menu li ul li:hover {
+ background: var(--cottoncandy);
+  color: #fff;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+}
     
 </style>
-
-
