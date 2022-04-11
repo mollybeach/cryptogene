@@ -1,6 +1,7 @@
 # cryptogene
 
-> create nfts from your dna
+> create nfts from your dna <br/>
+![alt text](https://res.cloudinary.com/storagemanagementcontainer/image/upload/v1649716595/cryptogene/cryptogene_tsrx9v.png)
 
 ## Build Setup
 
