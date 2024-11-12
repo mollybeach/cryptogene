@@ -1,0 +1,1 @@
+.menu-droppo-enter{transition:transform .3s ease-in-out;transform:translateY(-200%)}.menu-droppo-enter.menu-droppo-enter-active,.menu-droppo-leave{transition:transform .3s ease-in-out;transform:translateY(0)}.menu-droppo-leave.menu-droppo-leave-active{transition:transform .3s ease-in-out;transform:translateY(-200%)}
